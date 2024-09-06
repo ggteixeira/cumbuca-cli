@@ -19,3 +19,4 @@ Executando o binário, sua CLI será executada.
 
 - Primeiro eu entendi como trabalhar com o CLI do main() e depois entendi que devo implementar meu próprio CLI
 - Para isso, utilizei um `IO.gets()` recursivo para captar comandos até que o usuário chame `CTRL+C` para destruir o programa e o loop.
+- Em seguida, criei um alias chamado `cumbuca`, no meu shell, para facilitar o build e execução do CLI no terminal: `alias cumbuca='mix escript.build && ./desafio_cli'`
