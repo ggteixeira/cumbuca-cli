@@ -7,13 +7,14 @@ defmodule DesafioCli do
   A função main recebe os argumentos passados na linha de
   comando como lista de strings e executa a CLI.
   """
-  def main(args) do
-    IO.puts(phrase(args))
+  def main() do
+    get_input()
+    IO.puts(get_input())
   end
 
-  def phrase(args) do
-    [key, value] = args
-    IO.puts("Chave: #{key}")
-    IO.puts("Valor: #{value}")
+  def get_input do
+    input = IO.gets("> ")
+    IO.puts(input)
+    get_input()
   end
 end
