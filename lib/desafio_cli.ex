@@ -12,19 +12,12 @@ defmodule DesafioCli do
   end
 
   def get_input do
-    input = IO.gets("> ")
-    manage_commands(input)
+    IO.gets("> ") |> manage_commands()
 
     get_input()
   end
 
   def manage_commands(command) do
-    command_array = String.split(command)
-
-    [first, second, third] = command_array
-
-    IO.puts("first: #{first}")
-    IO.puts("second: #{second}")
-    IO.puts("third: #{third}")
+    [cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
   end
 end
