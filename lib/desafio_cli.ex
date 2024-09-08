@@ -10,15 +10,21 @@ defmodule DesafioCli do
     get_input(listb)
   end
 
-  # def set(data, key, value) do
-  #   Map.put(data, key, value)
-  # end
+  def set(data, key, value) do
+    Map.put(data, key, value)
+  end
 
   def manage_commands(command) do
-    [_cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
+    [cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
 
     data = %{}
-    Map.put(data, key, value)
+
+    case cmd do
+      "SET" -> IO.puts("CAFE")
+      _ -> IO.puts("Unknown command: #{cmd}")
+    end
+
+    set(data, key, value)
   end
 
   @doc """
