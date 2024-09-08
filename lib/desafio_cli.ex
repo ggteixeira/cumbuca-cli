@@ -3,33 +3,22 @@ defmodule DesafioCli do
   Ponto de entrada para a CLI.
   """
 
-  def get_input do
-    # IO.gets("> ") |> manage_commands()
-    IO.gets("> ") |> manage_commands()
-
-    get_input()
+  def get_input(lista) do
+    input = IO.gets("> ")
+    listb = [manage_commands(input) | lista]
+    IO.inspect(listb)
+    get_input(listb)
   end
 
-  def set(data, key, value) do
-    new_data = Map.put(data, key, value)
-    IO.puts("\nI'm data function")
-    IO.inspect(new_data)
-    new_data
-  end
+  # def set(data, key, value) do
+  #   Map.put(data, key, value)
+  # end
 
   def manage_commands(command) do
     [_cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
 
     data = %{}
-
-    set(data, key, value)
-
-    # new_data = Map.put(data, :coisa, "coisada")
-    # IO.inspect(new_data)
-    #
-    # newer_data = Map.put(new_data, :outra_coisa, "outra coisa coisilson")
-    #
-    # IO.inspect(newer_data)
+    Map.put(data, key, value)
   end
 
   @doc """
@@ -38,6 +27,7 @@ defmodule DesafioCli do
   """
 
   def main(_args) do
-    get_input()
+    lista = []
+    get_input(lista)
   end
 end
