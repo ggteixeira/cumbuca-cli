@@ -6,12 +6,20 @@ defmodule DesafioCli do
   def get_input(current_list) do
     input = IO.gets("> ")
 
-    IO.inspect([manage_commands(input) | current_list])
+    # IO.inspect([manage_commands(input) | current_list])
 
-    get_input([manage_commands(input) | current_list])
+    [cmd, key | value] = String.split(input, " ", parts: 3, trim: true)
+
+    # IO.inspect([manage_commands(cmd, key, value) | current_list])
+
+    IO.inspect(current_list)
+
+    get_input([manage_commands(cmd, key, value) | current_list])
+    get_input(manage_commands(cmd, key))
   end
 
   def set(key, value) do
+    # IO.puts("O set() rodou!")
     data = %{}
     Map.put(data, key, value)
   end
@@ -25,8 +33,12 @@ defmodule DesafioCli do
     # IO.inspect(gotten)
   end
 
-  def manage_commands(command) do
-    [cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
+  def manage_commands(_cmd, _key) do
+    IO.puts("Recebi dois parâmetros!")
+  end
+
+  def manage_commands(cmd, key, value) do
+    # [cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
 
     case cmd do
       "SET" ->
