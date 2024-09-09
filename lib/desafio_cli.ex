@@ -6,31 +6,23 @@ defmodule DesafioCli do
   def get_input(current_list) do
     input = IO.gets("> ")
 
-    # IO.inspect([manage_commands(input) | current_list])
-
     [cmd, key | value] = String.split(input, " ", parts: 3, trim: true)
-
-    # IO.inspect([manage_commands(cmd, key, value) | current_list])
 
     IO.inspect(current_list)
 
+    ### 3 parameters 
     get_input([manage_commands(cmd, key, value) | current_list])
+
+    ### 2 parameters
     get_input(manage_commands(cmd, key))
   end
 
   def set(key, value) do
-    # IO.puts("O set() rodou!")
     data = %{}
     Map.put(data, key, value)
   end
 
   def begin(_key) do
-    # Enum.find(data, fn map -> map[key] == key end)
-    IO.puts("Rodou o begin!")
-
-    # date = [%{"testa" => "1"}, %{"teste" => "2"}, %{"testi" => "3"}]
-    # gotten = Enum.find(date, fn map -> map end)
-    # IO.inspect(gotten)
   end
 
   def manage_commands(_cmd, _key) do

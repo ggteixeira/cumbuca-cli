@@ -30,3 +30,5 @@ Executando o binário, sua CLI será executada.
 - Depois de um tempo quebrando a cabeça, consegui fazer com pattern matching uma função que aceita os três parâmetros da transação sem precisar replicar o modelo mental dos switches e if/elses.
 - I have lost some time trying to understand why `String.split()` wasn't working, until I found out that you should use `IO.inspect()` to print anything but strings. The `IO.puts()` is only for strings. E eu não sei por que estou escrevendo em inglês. Enfim.
 - Consegui criar uma função de `set()` (equivalente ao `SET` do desafio) que adiciona maps a uma lista/array simples
+- Fiz a função que gerencia os comandos compreender, usando a "aridade", quando recebe dois comandos ("BEGIN teste", por exemplo) e três comandos ("SET teste 1", por exemplo)
+- Passei boa parte do tempo tentando garantir que a base do fluxo de informações fosse escalável, para que na parte final do teste eu conseguisse ir adicionando as features necessárias para cada comando possível. Se fui feliz nessa estratégia, imagino que um MVP com a maioria das features vai ficar pronto.
