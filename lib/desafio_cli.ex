@@ -22,28 +22,17 @@ defmodule DesafioCli do
 
   def begin(commands, data) do
     [_cmd | key] = String.split(commands, " ", parts: 2, trim: true)
-    IO.puts("key: #{key}")
-    IO.puts("key (string): #{to_string(key)}")
-    IO.puts("data:")
-    IO.inspect(data)
-
-    # lista = [
-    #   %{"TESTO" => "4\n"},
-    #   %{"TESTA" => "3\n"},
-    #   %{"TESTE" => "2\n"},
-    #   %{"LEVEL" => "1\n"}
-    # ]
-
-    IO.puts("\nResultado do begin:")
 
     filtered_list =
       Enum.filter(data, fn item -> Map.get(item, to_string(key)) end)
 
     [extracted_map] = filtered_list
 
-    result = Map.get(extracted_map, to_string(key))
+    Map.get(extracted_map, to_string(key))
+  end
 
-    IO.inspect(result)
+  def rollback() do
+    []
   end
 
   def manage_commands(commands_array, data) do
@@ -55,6 +44,9 @@ defmodule DesafioCli do
 
       "BEGIN" ->
         begin(commands_array, data)
+
+      "ROLLBACK" ->
+        rollback()
 
       _ ->
         raise RuntimeError, "Oh, no!"
