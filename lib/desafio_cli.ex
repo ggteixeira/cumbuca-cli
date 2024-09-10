@@ -36,11 +36,14 @@ defmodule DesafioCli do
 
     IO.puts("\nResultado do begin:")
 
-    filtered_map =
+    filtered_list =
       Enum.filter(data, fn item -> Map.get(item, to_string(key)) end)
-      |> Map.get(to_string(key))
 
-    IO.inspect(filtered_map)
+    [extracted_map] = filtered_list
+
+    result = Map.get(extracted_map, to_string(key))
+
+    IO.inspect(result)
   end
 
   def manage_commands(commands_array, data) do
