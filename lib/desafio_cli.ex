@@ -4,23 +4,20 @@ defmodule DesafioCli do
   """
 
   def get_input(data) do
+    # TODO: Adicionar o lambda no lugar do ">" : λ
     commands = IO.gets("> ") |> String.upcase() |> String.trim()
 
-    updated_data = manage_commands(commands, data)
-
-    IO.puts("\nUpdated data:")
-    IO.inspect(updated_data)
-
-    get_input(updated_data)
+    get_input(manage_commands(commands, data))
   end
 
   def set(commands, data) do
     [_cmd, key, value] = String.split(commands, " ", parts: 3, trim: true)
 
+    IO.inspect([%{key => value} | data])
     [%{key => value} | data]
   end
 
-  def begin(commands, data) do
+  def get(commands, data) do
     [_cmd | key] = String.split(commands, " ", parts: 2, trim: true)
 
     filtered_list =
@@ -28,10 +25,16 @@ defmodule DesafioCli do
 
     [extracted_map] = filtered_list
 
+    IO.inspect(Map.get(extracted_map, to_string(key)))
     Map.get(extracted_map, to_string(key))
   end
 
+  def begin() do
+    IO.puts("Rodou o begin()")
+  end
+
   def rollback() do
+    IO.puts([])
     []
   end
 
@@ -42,14 +45,17 @@ defmodule DesafioCli do
       "SET" ->
         set(commands_array, data)
 
+      "GET" ->
+        get(commands_array, data)
+
       "BEGIN" ->
-        begin(commands_array, data)
+        IO.puts("Begin")
 
       "ROLLBACK" ->
         rollback()
 
       _ ->
-        raise RuntimeError, "Oh, no!"
+        raise RuntimeError, "Command #{cmd} not available! Please, try again."
     end
   end
 
