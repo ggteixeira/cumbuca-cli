@@ -24,3 +24,6 @@ desafio_cli-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# OS files
+.DS_Store
