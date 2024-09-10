@@ -3,41 +3,43 @@ defmodule DesafioCli do
   Ponto de entrada para a CLI.
   """
 
-  def get_input(current_list) do
-    input = IO.gets("> ")
+  def get_input(data) do
+    commands = IO.gets("> ") |> String.upcase()
 
-    [cmd, key | value] = String.split(input, " ", parts: 3, trim: true)
+    updated_data = manage_commands(commands, data)
 
-    IO.inspect(current_list)
+    IO.puts("\nUpdated data:")
+    IO.inspect(updated_data)
 
-    ### 3 parameters 
-    get_input([manage_commands(cmd, key, value) | current_list])
-
-    ### 2 parameters
-    get_input(manage_commands(cmd, key))
+    get_input(updated_data)
   end
 
-  def set(key, value) do
-    data = %{}
-    Map.put(data, key, value)
+  def set(commands, data) do
+    [_cmd, key, value] = String.split(commands, " ", parts: 3, trim: true)
+
+    [%{key => value} | data]
   end
 
-  def begin(_key) do
+  def begin(commands, data) do
+    [_cmd | key] = String.split(commands, " ", parts: 2, trim: true)
+    IO.puts("key: #{key}")
+    IO.puts("key (string): #{to_string(key)}")
+    IO.puts("data:")
+    IO.inspect(data)
+
+    IO.puts("\nResultado do begin:")
+    IO.inspect(Enum.filter(data, fn map -> Map.get(map, to_string(key)) == true end))
   end
 
-  def manage_commands(_cmd, _key) do
-    IO.puts("Recebi dois parâmetros!")
-  end
-
-  def manage_commands(cmd, key, value) do
-    # [cmd, key, value] = String.split(command, " ", parts: 3, trim: true)
+  def manage_commands(commands_array, data) do
+    [cmd | _opts] = String.split(commands_array, " ", parts: 3, trim: true)
 
     case cmd do
       "SET" ->
-        set(key, value)
+        set(commands_array, data)
 
       "BEGIN" ->
-        begin(key)
+        begin(commands_array, data)
 
       _ ->
         raise RuntimeError, "Oh, no!"
