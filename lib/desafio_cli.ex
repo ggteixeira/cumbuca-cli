@@ -13,12 +13,20 @@ defmodule DesafioCli do
   def set(commands, data) do
     [_cmd, key, value] = String.split(commands, " ", parts: 3, trim: true)
 
-    is_already_added = Enum.filter(data, fn map -> Map.get(map, key) end)
+    duplicated_transaction_count =
+      Enum.filter(data, fn map -> Map.get(map, key) end)
+      |> length()
 
-    IO.puts(if length(is_already_added) > 0, do: "TRUE", else: "FALSE")
+    is_already_added = if duplicated_transaction_count > 0, do: "TRUE", else: "FALSE"
 
-    IO.inspect([%{key => value} | data])
-    [%{key => value} | data]
+    IO.puts("#{is_already_added} #{value}")
+
+    # TODO: Just for debugging. Remove later
+    IO.inspect(
+      Enum.uniq_by([%{key => value} | data], fn item -> Map.get(item, to_string(key)) end)
+    )
+
+    Enum.uniq_by([%{key => value} | data], fn item -> Map.get(item, to_string(key)) end)
   end
 
   def get(commands, data) do
