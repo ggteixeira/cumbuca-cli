@@ -22,11 +22,9 @@ defmodule DesafioCli do
     IO.puts("#{is_already_added} #{value}")
 
     # TODO: Just for debugging. Remove later
-    IO.inspect(
-      Enum.uniq_by([%{key => value} | data], fn item -> Map.get(item, to_string(key)) end)
-    )
 
-    Enum.uniq_by([%{key => value} | data], fn item -> Map.get(item, to_string(key)) end)
+    IO.inspect(Enum.uniq([%{key => value} | data]))
+    Enum.uniq([%{key => value} | data])
   end
 
   def get(commands, data) do

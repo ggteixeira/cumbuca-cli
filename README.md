@@ -28,7 +28,6 @@ Executando o binário, sua CLI será executada.
 - Fiz a função que gerencia os comandos compreender, usando a "aridade", quando recebe dois comandos ("BEGIN teste", por exemplo) e três comandos ("SET teste 1", por exemplo)
 - Passei boa parte do tempo tentando garantir que a base do fluxo de informações fosse escalável, para que na parte final do teste eu conseguisse ir adicionando as features necessárias para cada comando possível. Se fui feliz nessa estratégia, imagino que um MVP com a maioria das features vai ficar pronto.
 - Depois de gastar bastante tempo entendendo por que um `Enum.filter()` estava funcionando no `iex`, mas não no módulo, dei outro jeito e aí funcionou.
-- Melhorei o SET para evitar que itens duplicados sejam adicionados
 
 ## Bibliografia
 
