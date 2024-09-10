@@ -4,7 +4,7 @@ defmodule DesafioCli do
   """
 
   def get_input(data) do
-    commands = IO.gets("> ") |> String.upcase()
+    commands = IO.gets("> ") |> String.upcase() |> String.trim()
 
     updated_data = manage_commands(commands, data)
 
@@ -27,8 +27,20 @@ defmodule DesafioCli do
     IO.puts("data:")
     IO.inspect(data)
 
+    # lista = [
+    #   %{"TESTO" => "4\n"},
+    #   %{"TESTA" => "3\n"},
+    #   %{"TESTE" => "2\n"},
+    #   %{"LEVEL" => "1\n"}
+    # ]
+
     IO.puts("\nResultado do begin:")
-    IO.inspect(Enum.filter(data, fn map -> Map.get(map, to_string(key)) == true end))
+
+    filtered_map =
+      Enum.filter(data, fn item -> Map.get(item, to_string(key)) end)
+      |> Map.get(to_string(key))
+
+    IO.inspect(filtered_map)
   end
 
   def manage_commands(commands_array, data) do
