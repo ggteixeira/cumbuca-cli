@@ -1,18 +1,13 @@
 <!--toc:start-->
 
-- [Template para Desafio CLI](#template-para-desafio-cli)
-  - [Pré-requisitos](#pré-requisitos)
+- [Instruções](#instruções)
 - [CLI](#cli)
-<!--toc:end-->
 
-# Template para Desafio CLI
+  <!--toc:end-->
 
-Este template tem o objetivo de servir como
-ponto de partida para a implementação de desafios
-de contratação da Cumbuca que envolvam implementar
-uma interface de linha de comando em Elixir.
+![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cumbuca-gif.gif)
 
-## Pré-requisitos
+## Instruções
 
 Primeiro, será necessário [instalar o Elixir](https://elixir-lang.org/install.html)
 em versão igual ou superior a 1.16.
