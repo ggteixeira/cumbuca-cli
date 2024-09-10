@@ -5,7 +5,7 @@
 
   <!--toc:end-->
 
-![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cumbuca-gif.gif)
+![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cli.gif)
 
 ## Instruções
 
