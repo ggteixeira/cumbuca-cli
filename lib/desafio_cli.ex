@@ -4,7 +4,7 @@ defmodule DesafioCli do
   """
 
   def get_input(data) do
-    # TODO: Adicionar o lambda no lugar do ">" : λ
+    # TODO: Adicionar o lambda no lugar do ">": λ
     commands = IO.gets("> ") |> String.upcase() |> String.trim()
 
     get_input(manage_commands(commands, data))
@@ -12,6 +12,10 @@ defmodule DesafioCli do
 
   def set(commands, data) do
     [_cmd, key, value] = String.split(commands, " ", parts: 3, trim: true)
+
+    is_already_added = Enum.filter(data, fn map -> Map.get(map, key) end)
+
+    IO.puts(if length(is_already_added) > 0, do: "TRUE", else: "FALSE")
 
     IO.inspect([%{key => value} | data])
     [%{key => value} | data]
@@ -26,7 +30,7 @@ defmodule DesafioCli do
     [extracted_map] = filtered_list
 
     IO.inspect(Map.get(extracted_map, to_string(key)))
-    Map.get(extracted_map, to_string(key))
+    data
   end
 
   def begin() do
@@ -36,6 +40,10 @@ defmodule DesafioCli do
   def rollback() do
     IO.puts([])
     []
+  end
+
+  def commit() do
+    IO.puts("Rodou o commit()")
   end
 
   def manage_commands(commands_array, data) do
