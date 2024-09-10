@@ -2,7 +2,7 @@
 
 - [Instruções](#instruções)
 - [CLI](#cli)
-
+  - [Bibliografia](#bibliografia)
   <!--toc:end-->
 
 ![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cli.gif)
@@ -28,3 +28,10 @@ Executando o binário, sua CLI será executada.
 - Fiz a função que gerencia os comandos compreender, usando a "aridade", quando recebe dois comandos ("BEGIN teste", por exemplo) e três comandos ("SET teste 1", por exemplo)
 - Passei boa parte do tempo tentando garantir que a base do fluxo de informações fosse escalável, para que na parte final do teste eu conseguisse ir adicionando as features necessárias para cada comando possível. Se fui feliz nessa estratégia, imagino que um MVP com a maioria das features vai ficar pronto.
 - Depois de gastar bastante tempo entendendo por que um `Enum.filter()` estava funcionando no `iex`, mas não no módulo, dei outro jeito e aí funcionou.
+
+## Bibliografia
+
+- [Elixir Official Standard Library Documentation/Hexdocs](https://elixir-lang.org/docs.html)
+- [Elixir School](https://elixirschool.com/en)
+- [Elixir Forum](https://elixirforum.com/)
+- [Joy of Elixir](https://joyofelixir.com/toc.html)
