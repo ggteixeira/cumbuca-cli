@@ -18,8 +18,6 @@
   - [Bibliografia](#bibliografia)
   <!--toc:end-->
 
-![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cli.gif)
-
 ## Instruções
 
 Primeiro, será necessário [instalar o Elixir](https://elixir-lang.org/install.html)
@@ -31,6 +29,8 @@ Isso irá gerar um binário com o mesmo nome do projeto na pasta.
 Executando o binário, sua CLI será executada.
 
 # CLI
+
+![](https://github.com/ggteixeira/cumbuca-cli/blob/main/media/cli.gif)
 
 ## Pequeno diário de bordo
 
