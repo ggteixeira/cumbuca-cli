@@ -4,8 +4,7 @@ defmodule DesafioCli do
   """
 
   def get_input(data) do
-    # TODO: Adicionar o lambda no lugar do ">": λ
-    commands = IO.gets("> ") |> String.upcase() |> String.trim()
+    commands = IO.gets("λ ") |> String.upcase() |> String.trim()
 
     get_input(manage_commands(commands, data))
   end
@@ -19,11 +18,10 @@ defmodule DesafioCli do
 
     is_already_added = if duplicated_transaction_count > 0, do: "TRUE", else: "FALSE"
 
+    # NOTE: Uncomment the line below to display transactions statuses in real time
+    # IO.inspect(Enum.uniq([%{key => value} | data]))
+
     IO.puts("#{is_already_added} #{value}")
-
-    # TODO: Just for debugging. Remove later
-
-    IO.inspect(Enum.uniq([%{key => value} | data]))
     Enum.uniq([%{key => value} | data])
   end
 
@@ -35,7 +33,7 @@ defmodule DesafioCli do
 
     [extracted_map] = filtered_list
 
-    IO.inspect(Map.get(extracted_map, to_string(key)))
+    IO.puts(Map.get(extracted_map, to_string(key)))
     data
   end
 
@@ -78,7 +76,7 @@ defmodule DesafioCli do
   comando como lista de strings e executa a CLI.
   """
   def main(_args) do
-    data_list = []
-    get_input(data_list)
+    data = []
+    get_input(data)
   end
 end
